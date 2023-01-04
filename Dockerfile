@@ -1,4 +1,4 @@
-FROM ruby:latest
+FROM ruby:3.1.3
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs postgresql-client
 
@@ -11,6 +11,7 @@ RUN bundle install
 RUN rails db:create
 
 RUN rails db:migrate
+
 
 EXPOSE 3000
 
