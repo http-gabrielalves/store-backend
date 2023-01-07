@@ -8,6 +8,16 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
+  #check if email exists
+  def check_email
+    @user = User.find_by(email: params[:email])
+    if @user
+      render json: {exists: true}
+    else
+      render json: {exists: false}
+    end
+  end
+
   # GET /users/1
   def show
     render json: @user
@@ -46,6 +56,8 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :created, :address, :picture)
+      params.require(:user).permit(:name, :created, :address, :picture, :email)
     end
+
+    
 end

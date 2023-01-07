@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :products 
+      post '/check_email', to: 'users#check_email'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
