@@ -14,7 +14,7 @@ end
     describe 'POST /products' do
         it 'creates a nw product' do
             expect {
-            post '/api/v1/products', params: { product: { name: 'test', image: 'image1', description: 'description1', category: 'category1', unit: 'kg', stocked: 1, price: 1.0 } }
+            post '/api/v1/products', params: { product: { name: 'test', image: 'image1', description: 'description1', category: 'category1', unit: 'kg', stocked: 1, price: 1.0 } } 
             
         }.to change(Product, :count).by(1)
             expect(response).to have_http_status(:created)

@@ -5,7 +5,7 @@ module Api
 
       # GET /products
       def index
-        @products = Product.all
+        @products = Product.all.includes(:measurement_unit)
 
         render json: @products
       end
@@ -48,7 +48,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def product_params
-          params.require(:product).permit(:name, :image, :description, :category, :unit, :stocked, :price, :featured)
+          params.require(:product).permit(:name, :image, :description, :category, :unit, :stocked, :price, :featured, :measurement_unit_id)
         end
       end
     end
